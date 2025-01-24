@@ -2,5 +2,7 @@
 CSC3220
 
 Members:
+
 Quinton Pho // Github ID: quintonpvnw
+
 Eva Espindola // Github ID: espindolae
