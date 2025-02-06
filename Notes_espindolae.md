@@ -18,3 +18,7 @@ Entities
   Wishlist
   Read Status
   Rating
+
+FEB 5:
+Make Author an entity
+More attributes in books
