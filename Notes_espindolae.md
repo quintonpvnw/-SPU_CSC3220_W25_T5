@@ -18,3 +18,12 @@ Entities
   Wishlist
   Read Status
   Rating
+
+FEB 5:
+Make Author an entity
+More attributes in books
+
+FEB 6:
+Edited ERD to inlude Author as a seperate Entity and added more atributes to the book entity
+Author| AUTHOR ID (PK), Name, Birthyear, Biography
+Book| Book ID (PK), Author ID (FK), Name, Genre, Published Year ISBN
