@@ -1,5 +1,5 @@
 --
--- File generated with SQLiteStudio v3.4.15 on Fri Feb 14 15:41:56 2025
+-- File generated with SQLiteStudio v3.4.15 on Wed Feb 19 14:30:24 2025
 --
 -- Text encoding used: System
 --
@@ -7,6 +7,8 @@ PRAGMA foreign_keys = off;
 BEGIN TRANSACTION;
 
 -- Table: Author
+DROP TABLE IF EXISTS Author;
+
 CREATE TABLE IF NOT EXISTS Author (
     AuthorID  INTEGER PRIMARY KEY AUTOINCREMENT,
     FirstName TEXT    NOT NULL,
@@ -18,27 +20,23 @@ STRICT;
 
 
 -- Table: Book
+DROP TABLE IF EXISTS Book;
+
 CREATE TABLE IF NOT EXISTS Book (
     BookID           INTEGER PRIMARY KEY AUTOINCREMENT,
-    AuthorID         INTEGER REFERENCES Author (AuthorID),
     Title            TEXT    NOT NULL,
     Genre            TEXT,
     [Published Year] TEXT,
-    IBSN             NUMERIC UNIQUE
-);
-
-
--- Table: Rating
-CREATE TABLE IF NOT EXISTS Rating (
-    RatingID INTEGER PRIMARY KEY AUTOINCREMENT,
-    BookID   INTEGER REFERENCES Book (BookID),
-    Stars    INTEGER,
-    Review   TEXT
+    IBSN             INTEGER UNIQUE,
+    Rating           INTEGER,
+    Review           TEXT
 )
 STRICT;
 
 
 -- Table: Status
+DROP TABLE IF EXISTS Status;
+
 CREATE TABLE IF NOT EXISTS Status (
     StatusID      INTEGER PRIMARY KEY AUTOINCREMENT,
     BookID        INTEGER REFERENCES Book (BookID),
@@ -50,6 +48,8 @@ STRICT;
 
 
 -- Table: Wishlist
+DROP TABLE IF EXISTS Wishlist;
+
 CREATE TABLE IF NOT EXISTS Wishlist (
     [Wishlist ID] INTEGER PRIMARY KEY AUTOINCREMENT,
     BookID        ANY     REFERENCES Book (BookID),
@@ -59,6 +59,8 @@ STRICT;
 
 
 -- Table: WrittenBy
+DROP TABLE IF EXISTS WrittenBy;
+
 CREATE TABLE IF NOT EXISTS WrittenBy (
     AuthorID INTEGER REFERENCES Author (AuthorID) 
                      NOT NULL,
