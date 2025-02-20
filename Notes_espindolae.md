@@ -27,3 +27,7 @@ FEB 6:
 Edited ERD to inlude Author as a seperate Entity and added more atributes to the book entity
 Author| AUTHOR ID (PK), Name, Birthyear, Biography
 Book| Book ID (PK), Author ID (FK), Name, Genre, Published Year ISBN
+
+Week 6: Drafted DB Schema
+
+Week 7: Submit final DB and update to reflect suggestions
