@@ -1,0 +1,3 @@
+Select * from Book;
+INSERT INTO BOOK (Title, Genre, Published, Rating)
+VALUES ('Bible', 'Theology', '2000', '0');
