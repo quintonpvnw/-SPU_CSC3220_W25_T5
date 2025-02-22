@@ -1,5 +1,5 @@
 --
--- File generated with SQLiteStudio v3.4.15 on Fri Feb 21 21:40:51 2025
+-- File generated with SQLiteStudio v3.4.15 on Fri Feb 21 22:05:15 2025
 --
 -- Text encoding used: System
 --
@@ -31,7 +31,7 @@ CREATE TABLE IF NOT EXISTS Book (
     Rating    INTEGER,
     Review    TEXT,
     Status    INTEGER NOT NULL
-                      AS (0),
+                      DEFAULT (0),
     Goal      TEXT
 )
 STRICT;
