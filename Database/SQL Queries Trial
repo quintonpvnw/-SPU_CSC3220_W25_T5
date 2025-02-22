@@ -1,3 +1,76 @@
-Select * from Book;
-INSERT INTO BOOK (Title, Genre, Published, Rating)
-VALUES ('Bible', 'Theology', '2000', '0');
+SELECT * FROM Book;
+SELECT * FROM Author;
+SELECT * FROM Wishlist;
+SELECT * FROM WrittenBy;
+
+-- Clear everything
+DELETE FROM Author;
+DELETE FROM sqlite_sequence WHERE name = 'Author';
+
+DELETE FROM Book;
+DELETE FROM sqlite_sequence WHERE name = 'Book';
+
+DELETE FROM Wishlist;
+DELETE FROM sqlite_sequence WHERE name = 'Wishlist';
+
+DELETE FROM WrittenBy;
+DELETE FROM sqlite_sequence WHERE name = 'WrittenBy';
+
+-- Populate Database 
+INSERT INTO Author (FirstName, LastName, Birthyear, Biography) 
+VALUES 
+    ('George', 'Orwell', '1903', '1984 dude'),
+    ('Jane', 'Austen', '1775', 'Pride and Prejudice lady'),
+    ('J.K.', 'Rowling', '1965', 'Harry Potter lady'),
+    ('Mark', 'Twain', '1835', 'Huckleberry Finn dude');
+
+INSERT INTO Book (Title, Genre, Published, IBSN, Rating, Review, Goal) 
+VALUES
+    ('1984', 'Dystopian', '1949', 9780451524935, 5, 'Big brother is watching', 'Read in 1985'),
+    ('Pride and Prejudice', 'Romance', '1813', 9780679783268, 5, 'There''s prejudice in my pride!.', null),
+    ('Harry Potter and the Sorcerer''s Stone', 'Fantasy', '1997', 9780590353427, 5, 'You''re a wizard Harry!', 'Reread next year'),
+    ('Adventures of Huckleberry Finn', 'Adventure', '1885', 9780486280615, 4, 'What a stupid name', 'Not going to read');
+
+INSERT INTO WrittenBy (AuthorID, BookID) 
+VALUES 
+    (1, 1),
+    (2, 2), 
+    (3, 3), 
+    (4, 4); 
+
+INSERT INTO Wishlist (BookID, Added_Date) 
+VALUES 
+    (1, '2025-02-20'),
+    (3, '2025-02-15');
+
+-- Required DML Queries
+SELECT Book.Title, Author.FirstName, Author.LastName, Book.Genre 
+FROM Book
+JOIN WrittenBy ON WrittenBy.BookID = Book.BookID
+JOIN Author ON WrittenBy.AuthorID = Author.AuthorID
+WHERE Book.Genre = 'Fantasy';
+
+
+UPDATE Book SET Goal = 'Read in June' WHERE BookID = 2;
+UPDATE Author SET Biography = 'Big bro' WHERE FirstName = 'George';
+
+
+INSERT INTO Book (Title, Genre, Published, IBSN, Rating, Review, Goal) 
+VALUES
+    ('Geronomo Stilton: Lost Treasure of the Emerald Eye', 'Adventure', '2004', 9780439559638, 2, 'Mice can''t do that', 'Not reading that again');
+INSERT INTO Author (FirstName, LastName, Birthyear, Biography) 
+VALUES
+    ('Geronimo', 'Stilton', '2004', 'It''s the mouse guy');
+INSERT INTO WrittenBy (AuthorID, BookID)
+VALUES
+    (5, 5);
+
+
+DELETE FROM WrittenBy 
+WHERE BookID = (SELECT BookID FROM Book WHERE Title = '1984');
+DELETE FROM Wishlist 
+WHERE BookID = (SELECT BookID FROM Book WHERE Title = '1984');
+DELETE FROM Book 
+WHERE Title = '1984';
+
+
