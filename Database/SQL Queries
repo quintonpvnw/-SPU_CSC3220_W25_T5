@@ -1,0 +1,26 @@
+select * from Author
+INSERT INTO Author (FirstName, LastName, Birthyear, Biography) 
+VALUES ('Tara', 'Westover', 1986, 'Tara Westover is an American memoirist essayist historian.')
+select * from Author
+INSERT INTO Author (FirstName, LastName, Birthyear, Biography) 
+VALUES ('George', 'Orwell', 1903, 'George Orwell was the pen name of Eric Arthur Blair, an influential British journalist and author.');
+INSERT INTO Author (FirstName, LastName, Birthyear, Biography) 
+VALUES ('Jennette', 'McCurdy', 1992, 'Jennette Michelle Faye McCurdy is a former actress, singer, filmmaker, and writer');
+INSERT INTO Author (FirstName, LastName, Birthyear, Biography) 
+VALUES ('Suzanne', 'Collins', 1962, 'Suzanne Collins is an American author and screenwriter who first gained recognition for her childrens fantasy series, The Underland Chronicles');
+INSERT INTO Book (Title, Genre, Published, IBSN) 
+VALUES ('Educated: A Memoir','Bibliography',2018,0099511029)
+INSERT INTO Book (Title, Genre, Published, IBSN) 
+VALUES ('1984','Science Fiction',1949,9780451524935),
+       ('Im Glad My Mom Died','Autobiography',2022,9781982185824),
+       ('The Hunger Games','Dystopian',2010,9780439023528)
+UPDATE Book
+SET Genre = 'Autobiography'
+WHERE BookID = 1;  
+Select * From Book;    
+UPDATE Book
+SET Rating = 5, Review = 'Really captivating'
+WHERE BookID = 1;    
+Select * From Book;
+Select * From Author;   
+
